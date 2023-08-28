@@ -1,0 +1,217 @@
+{% extends 'admin_base.html' %}
+
+{% load static %}
+
+{% block main %}
+
+<style>
+    .form-row label{
+        color: white;
+    }
+    #btn:hover{
+        background-color: rgba(0, 128, 128, 0.592) !important;
+    }
+</style>
+
+
+<div class="card shadow m-2" style="background: transparent; border: none;">
+    <div class="card-body">
+        <h4 class="p-2" style="border-bottom: 3px solid teal; color: rgb(255, 255, 255);"><b>Employee [ID {{employee.user.username}}]</b></h4>
+    </div>
+    <div class="container-fluid">
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-row">
+
+                <div class="col-sm-12">
+                    <h5 class="p-2" style="color: rgb(255, 255, 255); text-decoration: underline;">Personal Details</h5>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label for="" ><b>First Name</b></label>
+                        <input type="text" name="firstname" class="form-control" placeholder="Enter first name" pattern="[A-Za-z]+" value="{{employee.user.first_name}}">
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label for=""><b>Last Name</b></label>
+                        <input type="text" name="lastname" class="form-control" placeholder="Enter last name" pattern="[A-Za-z]+" value="{{employee.user.last_name}}">
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <label for=""><b>Profile Picture [{{employee.img}}]</b></label>
+                        <input type = file name="profilepicture" class="form-control" style="border: none; background: transparent; color: white;">
+                    </div>
+                </div>
+               <div class="col-sm-6">
+                    <div class="form-group">
+                        <label for=""><b>Date Of Birth [{{employee.dob}}]</b></label>
+                        <input type="date" name="dateofbirth" class="form-control" >
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label for=""><b>Gender [{{employee.gender}}]</b></label>
+                        <select name="gender" class="form-control">
+                            <option value="None">Select-Gender</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <label for=""><b>Blood Group [{{employee.blood_grp}}]</b></label>
+                        <select name="bloodgroup" class="form-control" >
+                            <option value="None">-Select-</option>
+                            <option value="A+">A+</option>
+                            <option value="A-">A-</option>
+                            <option value="B+">B+</option>
+                            <option value="B-">B-</option>
+                            <option value="O+">O+</option>
+                            <option value="O-">O-</option>
+                            <option value="AB+">AB+</option>
+                            <option value="AB-">AB-</option>
+                        </select>
+                    </div>
+                </div>
+
+
+
+                
+                
+                <div class="col-sm-12">
+                    <h5 class="p-2" style="color: rgb(255, 255, 255); text-decoration: underline;">Personal ID's</h5>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label for="" ><b>Aadhar No.</b></label>
+                        <input type="text" name="aadharno" class="form-control" placeholder="Aadhar No" pattern="[0-9]+" value="{{employee.adhar}}">
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label for=""><b>Pan No.</b></label>
+                        <input type="text" name="panno" class="form-control" placeholder="Pan No" pattern="[A-Za-z0-9]+" value="{{employee.pan}}">
+                    </div>
+                </div>
+
+
+
+
+
+
+                <div class="col-sm-12">
+                    <h5 class="p-2" style="color: rgb(255, 255, 255); text-decoration: underline;">Bank Details</h5>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label for="" ><b>Bank Account No.</b></label>
+                        <input type="text" name="bankaccountno" class="form-control" placeholder="Account No." pattern="[0-9]+" value="{{employee.bank_acc}}">
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label for=""><b>IFSC Code</b></label>
+                        <input type="text" name="ifsccode" class="form-control" placeholder="IFSC Code" pattern="[A-Za-z0-9]+" value="{{employee.ifsc_code}}">
+                    </div>
+                </div>
+
+
+
+
+
+
+                <div class="col-sm-12">
+                    <h5 class="p-2" style="color: rgb(255, 255, 255); text-decoration: underline;">Family Details</h5>
+                </div>
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <label for="" ><b>Father's Name</b></label>
+                        <input type="text" name="fathername" class="form-control" placeholder="Enter Father's name" pattern="[A-Za-z]+" value="{{employee.father_name}}">
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <label for=""><b>Mother's Name</b></label>
+                        <input type="text" name="mothername" class="form-control" placeholder="Enter Mother's name" pattern="[A-Za-z]+" value="{{employee.mother_name}}">
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label for=""><b>Marital Status [{{employee.status}}]</b></label>
+                        <select name="maritalstatus" class="form-control">
+                            <option value="None">Select-Gender</option>
+                            <option value="Married">Married</option>
+                            <option value="Unmarried">Unmarried</option>
+                        </select>
+                    </div>
+                </div>
+
+
+
+
+                <div class="col-sm-12">
+                    <h5 class="p-2" style="color: rgb(255, 255, 255); text-decoration: underline;">Contact Details</h5>
+                </div>
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <label for=""><b>E-mail Id</b></label>
+                        <input type="email" name="emailid" class="form-control" placeholder="Enter E-mail Id" value="{{employee.user.email}}">
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label for="" ><b>Contact No.</b></label>
+                        <input type="text" name="contactno" class="form-control" placeholder="Enter Contact No." pattern="[0-9]+" value="{{employee.contact}}">
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label for=""><b>Address</b></label>
+                        <input type="text" name="address" class="form-control" placeholder="Enter Address" pattern="[A-Za-z0-9]+" value="{{employee.address}}">
+                    </div>
+                </div>
+
+
+
+
+                <div class="col-sm-12">
+                    <h5 class="p-2" style="color: rgb(255, 255, 255); text-decoration: underline;">Work Details</h5>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label for="" ><b>Department</b></label>
+                        <input type="text" name="department" class="form-control" placeholder="Enter Department" pattern="[A-Za-z]+" value="{{employee.empdept}}">
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label for=""><b>Designation</b></label>
+                        <input type="text" name="designation" class="form-control" placeholder="Enter Designation" pattern="[A-Za-z]+" value="{{employee.designation}}">
+                    </div>
+                </div>
+
+
+
+            </div>
+            <input id="btn" type="submit" value="Submit" class="btn btn-primary" style="background-color: teal; border: none;">
+        </form>
+    </div>
+</div>
+
+
+{% if eror == "yes" %}
+<script>
+    alert('Employee Details updated Successful');
+    window.location = ("{% url 'admin_emp_details' %}");
+</script>
+{% endif %}
+{% if eror == "no" %}
+<script>
+    alert('Something went wrong ');
+</script>
+{% endif %}
+
+{% endblock %}

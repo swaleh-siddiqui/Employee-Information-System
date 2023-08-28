@@ -1,0 +1,62 @@
+{% extends 'emp_base.html' %}
+
+{% block main %}
+
+<style>
+    #box:hover{
+        transform: scale(1.1) ;
+    }
+    #sh:hover{
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    }
+</style>
+
+
+<h4 class="p-2" style="border-bottom: 3px solid rgb(197, 181, 5); color: rgb(55, 133, 37);"><b>Dashboard</b></h4>
+
+<div class="row">
+    <div class="col-sm-12 p-2 mb-3">
+        <div class="card shadow" style="border-left: 6px solid green;">
+            <div class="card-body">
+                <center><h5 class="p-0" style=" color: rgb(55, 133, 37); "><b>Welcome back to EIS</b></h5></center>
+                <center><h5 class="p-0" ><b>{{request.user.first_name}} {{request.user.last_name}}</b></h5></center>
+
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-5 p-2 my-4 ml-5 " >
+        <div class="card shadow" id="box" style="border-left: 6px solid red;">
+            <div class="card-body" id="sh">
+                <center><a href="{% url 'profile' %}" class="btn stretched-link " style=" color: red; "><b> My Profile</b></a></center>
+                
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-5 p-2 my-4 ml-5">
+        <div class="card shadow" id="box" style="border-left: 6px solid blue;">
+            <div class="card-body" id="sh">
+                
+                <center><a href="{% url 'emp_edit_profile' %}" class="btn stretched-link " style=" color: blue; "><b>Edit Profile</b></a></center>
+                
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-5 p-2 my-4 ml-5">
+        <div class="card shadow" id="box" style="border-left: 6px solid orange;">
+            <div class="card-body" id="sh">
+                <center><a class="btn stretched-link " style=" color: orange; "><b>Welcome back to EIS</b></a></center>
+                
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-5 p-2 my-4 ml-5">
+        <div class="card shadow" id="box" style="border-left: 6px solid turquoise;">
+            <div class="card-body" id="sh">
+                <center><a href="{% url 'emp_change_password' %}" class="btn stretched-link " style=" color: turquoise; "><b>Change Password</b></a></center>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

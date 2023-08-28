@@ -1,0 +1,123 @@
+{% load static %}
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<link rel="stylesheet" href = "{% static 'css/style.css' %}">
+
+<style>
+    body{
+        background-image: url('static/images/background.jpg');
+        background-size: cover;
+    }
+    .d{
+        display: flex;
+        justify-content: center;
+    }
+    .list-group-item{
+        padding: 5px;
+        margin: 2px;
+        color: rgb(255, 234, 0);
+        background-color: rgb(55, 133, 37);
+        border-bottom-right-radius: 100px;
+        text-align: left;
+    }
+    .list-group-item:hover{
+        transition: .4s;
+        color:  rgb(41, 79, 32);
+        background-color: rgb(197, 181, 5);
+        border-bottom-right-radius: 200px;
+        z-index: 100;
+        text-align: center;
+    }
+</style>
+
+{% if request.path == '/emp_home' %}
+
+<style>
+    #dashboard{
+        color:  rgb(41, 79, 32);
+        background-color: rgb(197, 181, 5);
+    }
+</style>
+
+{% endif %}
+
+{% if request.path == '/profile' %}
+
+<style>
+    #profile{
+        color:  rgb(41, 79, 32);
+        background-color: rgb(197, 181, 5);
+    }
+</style>
+
+{% endif %}
+
+{% if request.path == '/emp_edit_profile' %}
+
+<style>
+    #editprofile{
+        color:  rgb(41, 79, 32);
+        background-color: rgb(197, 181, 5);
+    }
+</style>
+
+{% endif %}
+
+{% if request.path == '/emp_change_password' %}
+
+<style>
+    #password{
+        color:  rgb(41, 79, 32);
+        background-color: rgb(197, 181, 5);
+    }
+</style>
+
+{% endif %}
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-2 p-0">
+                <div class="d">
+                {% if employee.img %}
+                    <img src="{{ employee.img.url }}" width="100" height="100"  class="img-thumbnail rounded-circle my-3" style="border: 3px solid green;">
+                {% else %}
+                    <img src="{% static 'images/account logo.png' %}" width="100" height="100"  class="img-thumbnail rounded-circle my-3" style="border: 3px solid green;">
+                {% endif %}
+                </div>
+               
+                <div class="list-group" id="collapsibleNavbar">
+                    <a href="{% url 'emp_home' %}" class="btn list-group-item list-group-item-actiom" id="dashboard">Dashboard</a>
+                    <a href="{% url 'profile' %}" class="btn list-group-item list-group-item-actiom" id="profile">Profile</a>
+                    <a href="{% url 'emp_edit_profile' %}" class="btn list-group-item list-group-item-actiom" id="editprofile">Edit Profile</a>
+                    <a href="" class="btn list-group-item list-group-item-actiom">Profile</a>
+                    <a href="{% url 'emp_change_password' %}" class="btn list-group-item list-group-item-actiom" id="password">Change Password</a>
+                    <a href="{% url 'logout' %}" class="btn list-group-item list-group-item-actiom" style="border-bottom-right-radius: 100px;">Log Out</a>
+                </div>
+
+
+
+
+
+            </div>
+            <div class="col-sm-10 p-0">
+                <div class="container-fluid p-2">
+                    <h3 style="text-align: center ; margin: 10px; border-bottom: 5px solid rgb(197, 181, 5); border-top: 5px solid rgb(197, 181, 5); padding: 5px; padding-bottom: 7px; color: rgb(55, 133, 37); font-style: italic;"><b>EMPLOYEE INFORMATION SYSTEM</b></h3>
+                    <div class="card shadow m-2"style="min-height: 84vh; ">
+                        <div class="card-body" >
+                        {% block main %}
+
+                        {% endblock %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>

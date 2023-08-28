@@ -1,0 +1,94 @@
+{% extends 'admin_base.html' %}
+
+{% load static %}
+
+
+
+{% block main %}
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+<script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.4.1/js/dataTables.buttons.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.html5.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.print.min.js"></script>
+
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.4.1/css/buttons.dataTables.min.css">
+
+<script>
+    $(document).ready(function() {
+    $('#example').DataTable( {
+        dom: 'Bfrtip',
+        buttons: [
+            'copy', 'csv', 'excel', 'pdf', 'print'
+        ]
+    } );
+} );
+</script>
+
+
+<style>
+    #row:hover{
+        background-color: rgba(0, 0, 0, .2); 
+    }
+</style>
+
+
+
+<div class="card shadow mx-3" style="background: transparent; color: azure;">
+    <div class="card-body">
+        <h4 class="p-2" style="border-bottom: 3px solid teal; color: white;"><b>Employee Details</b></h4>
+    </div>
+
+    <div class="" style="max-height: 60vh; overflow: auto;">
+        <table id="example" class="table table-responsive" style="color: white;">
+            <thead style="background-color: rgba(0, 0, 0, .3); ">
+                <tr>
+                    <th>S.No</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Emp Code</th>
+                    <th>E-mail Id</th>
+                    <th>Department</th>
+                    <th>Designation</th>
+                    <th>Contact</th>
+                    <th>Image</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for i in emp %}
+                <tr id="row">
+                    <td>{{forloop.counter}}</td>
+                    <td>{{i.user.first_name}}</td>
+                    <td>{{i.user.last_name}}</td>
+                    <td>{{i.empcode}}</td>
+                    <td>{{i.user.email}}</td>
+                    <td>{{i.empdept}}</td>
+                    <td>{{i.designation}}</td>
+                    <td>{{i.contact}}</td>
+                    <td>
+                        {% if i.img %}
+                            <img src="{{ i.img.url }}"  class="img-thumbnail " >
+                        {% else %}
+                            <img src="{% static 'images/account logo.png' %}"  class="img-thumbnail " >
+                        {% endif %}
+                    </td>
+                    <td style="display: flex; justify-content: space-around;">
+                        <a data-toggle="tooltip" title="Delete" href="{% url 'delete_emp' i.user.id %}" onclick="return confirm('Are You Sure?')"><i class="fa fa-trash" style="color: white;"></i></a>
+                        <a data-toggle="tooltip" title="Edit" href="{% url 'admin_edit_emp' i.user.id %}"><i class="fa fa-edit" style="color: white;"></i></a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock %}

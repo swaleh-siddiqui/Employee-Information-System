@@ -1,0 +1,121 @@
+{% load static %}
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<link rel="stylesheet" href = "{% static 'css/style.css' %}">
+
+<style>
+    body{
+        background-image: url("{% static 'images/admin_login_bg.jpg' %}");
+        background-size: contain;
+    }
+
+    .list-group-item{
+        padding: 5px;
+        margin: 2px;
+        color: white;
+        border-bottom: 3px solid teal;
+        background: transparent;
+        text-align: left;
+    }
+    .list-group-item:hover{
+        transform: scale(1.2);
+        color:  teal;
+        background-color: white;
+        z-index: 100;
+        text-align: center;
+    }
+</style>
+
+{% if request.path == '/admin_home' %}
+
+<style>
+    #dashboard{
+        color:  teal;
+        background-color: rgb(255, 255, 255);
+    }
+</style>
+
+{% endif %}
+
+{% if request.path == '/register' %}
+
+<style>
+    #addemployee{
+        color:  teal;
+        background-color: rgb(255, 255, 255);
+    }
+</style>
+
+{% endif %}
+
+{% if request.path == '/admin_change_password' %}
+
+<style>
+    #password{
+        color:  teal;
+        background-color: rgb(255, 255, 255);
+    }
+</style>
+
+{% endif %}
+
+{% if request.path == '/admin_profile' %}
+
+<style>
+    #profile{
+        color:  teal;
+        background-color: rgb(255, 255, 255);
+    }
+</style>
+
+{% endif %}
+
+{% if request.path == '/admin_emp_details' %}
+
+<style>
+    #employeedetails{
+        color:  teal;
+        background-color: rgb(255, 255, 255);
+    }
+</style>
+
+{% endif %}
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-2 p-0">
+                <center>
+                <img src="{% static 'images/account logo.png' %}" width="100" height="100"  class="img-thumbnail rounded-circle my-3" style="background-color: rgb(0, 0, 0); border: 3px solid teal;">
+                </center>
+               
+                <div class="list-group" id="collapsibleNavbar">
+                    <a href="{% url 'admin_home' %}" class="btn list-group-item list-group-item-actiom" id="dashboard">Dashboard</a>
+                    <a href="{% url 'admin_profile' %}" class="btn list-group-item list-group-item-actiom" id="profile">My Profile</a>
+                    <a href="{% url 'register' %}" class="btn list-group-item list-group-item-actiom" id="addemployee">Add Employee</a>
+                    <a href="{% url 'admin_emp_details' %}" class="btn list-group-item list-group-item-actiom" id="employeedetails">Employee Details</a>
+                    <a href="{% url 'admin_change_password' %}" class="btn list-group-item list-group-item-actiom" id="password">Change Password</a>
+                    <a href="{% url 'logoutadmin' %}" class="btn list-group-item list-group-item-actiom">Log Out</a>
+                </div>
+            </div>
+            <div class="col-sm-10 p-0">
+                <div class="container-fluid p-2">
+                    <h3 style="text-align: center ; margin: 10px; border-bottom: 5px solid teal; border-top: 5px solid teal; padding: 5px; padding-bottom: 7px; color: rgb(255, 255, 255); font-style: italic;"><b>EMPLOYEE INFORMATION SYSTEM</b></h3>
+                    <div class="card shadow m-2"style="min-height: 84vh; background: transparent; border: 4px solid teal;">
+                        <div class="card-body" >
+                        {% block main %}
+
+                        {% endblock %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>

@@ -1,0 +1,91 @@
+{% extends 'admin_base.html' %}
+
+{% block main %}
+
+
+<style>
+    #t{
+        color: white;
+    }
+    #but:hover{
+        background-color: rgb(0, 99, 99) !important;
+    }
+</style>
+
+
+<script>
+    function checkpassword(){
+        if (document.signup.confirmpassword.value != document.signup.createpassword.value){
+            alert('Confirm password is incorrect ');
+            document.signup.confirmpassword.focus();
+            return false;
+        }
+        return true;
+    }
+</script>
+
+<div class="card shadow " style="background: transparent;">
+    <div class="card-body">
+        <h4 class="p-2" style="border-bottom: 3px solid teal; color: white;"><b>Create a new account</b></h4>
+    </div>
+    <div class="container-fluid">
+        <form method="post" name = "signup" onsubmit="return checkpassword()">
+            {% csrf_token %}
+            <div class="form-row">
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label id="t" for="" ><b>First Name</b></label>
+                        <input type="text" name="firstname" class="form-control" placeholder="Enter first name" pattern="[A-Za-z]+" required>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label id="t" for=""><b>Last Name</b></label>
+                        <input type="text" name="lastname" class="form-control" placeholder="Enter last name" pattern="[A-Za-z]+" required>
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <label id="t" for=""><b>Employee Id</b></label>
+                        <input type="text" name="employeeid" class="form-control" placeholder="Enter Employee id" pattern="[0-9]+" required>
+                    </div>
+                </div>
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <label id="t" for=""><b>E-mail Id</b></label>
+                        <input type="email" name="emailid" class="form-control" placeholder="Enter E-mail Id" required> 
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label id="t" for="" ><b>Create Password</b></label>
+                        <input type="password" name="createpassword" class="form-control" placeholder="Enter Password" required>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label id="t" for=""><b>Confirm Password</b></label>
+                        <input type="password" name="confirmpassword" class="form-control" placeholder="Enter Confirm Password" required>
+                    </div>
+                </div>
+
+            </div>
+            <input type="submit" value="submit" id="but" class="btn btn-primary" style="background-color: teal; border: none;">
+        </form>
+    </div>
+</div>
+
+
+{% if eror == "yes" %}
+<script>
+    alert('Employee added Successful');
+    window.location = ("{% url 'admin_home' %}");
+</script>
+{% endif %}
+{% if eror == "no" %}
+<script>
+    alert('Something went wrong ');
+</script>
+{% endif %}
+
+{% endblock %}

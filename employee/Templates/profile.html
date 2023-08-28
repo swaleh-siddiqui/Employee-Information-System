@@ -1,0 +1,160 @@
+{% extends 'emp_base.html' %}
+
+{% block main %}
+
+<div class="card shadow" style="border-left: 4px solid red;" >
+    <div class="card-body">
+        <h3 style="color: red; border-bottom: 4px solid rgb(197, 181, 5); padding: .5%;">My Profile</h3>
+    </div>
+    <div class="row mx-2" style="max-height: 60vh; overflow: auto;">
+        <div class="col-sm-6">
+            <div class="card shadow mb-4" style="border-top: 5px solid purple;">
+                <div class="card-body">
+                    <!-- #df944d -->
+                    <h4 style="color: darkblue;  padding: .5%;">Personal Details</h4>
+                    <table class="table table-responsive table-borderless">
+                        <tbody >
+                            <tr >
+                                <td>First Name :</td>
+                                <td>{{request.user.first_name}}</td>
+                            </tr>
+                            <tr>
+                                <td>Last Name :</td>
+                                <td>{{request.user.last_name}}</td>
+                            </tr>
+                            <tr>
+                                <td>Date of Birth :</td>
+                                <td>{{employee.dob}}</td>
+                            </tr>
+                            <tr>
+                                <td>Gender :</td>
+                                <td>{{employee.gender}}</td>
+                            </tr>
+                            <tr>
+                                <td>Blood Group :</td>
+                                <td>{{employee.blood_grp}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        
+            <div class="card shadow mb-4" style="border-top: 5px solid green;">
+                <div class="card-body">
+                    <h4 style="color: darkblue;  padding: .5%;">Bank Details</h4>
+                    <table class="table table-responsive table-borderless">
+                        <tbody >
+                            <tr>
+                                <td>Bank Acc. No. :</td>
+                                <td>{{employee.bank_acc}}</td>
+                            </tr>
+                            <tr>
+                                <td>IFSC Code :</td>
+                                <td>{{employee.ifsc_code}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="card shadow mb-4" style="border-top: 5px solid rgb(196, 4, 4);">
+                <div class="card-body">
+                    <h4 style="color: darkblue;  padding: .5%;">Word Details</h4>
+                    <table class="table table-responsive table-borderless">
+                        <tbody >
+                            <tr>
+                                <td>Username :</td>
+                                <td>{{employee.user.username}}</td>
+                            </tr>
+                            <tr>
+                                <td>Department :</td>
+                                <td>{{employee.empdept}}</td>
+                            </tr>
+                            <tr>
+                                <td>Designation :</td>
+                                <td>{{employee.designation}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="card shadow mb-4" style="border-top: 5px solid yellowgreen
+            ;">
+                <div class="card-body">
+                    <h4 style="color: darkblue;  padding: .5%;">Personal Id's</h4>
+                    <table class="table table-responsive table-borderless">
+                        <tbody >
+                            <tr >
+                                <td>Adhar No.  :</td>
+                                <td>{{employee.adhar}}</td>
+                            </tr>
+                            <tr>
+                                <td>Pan No. :</td>
+                                <td>{{employee.pan}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="card shadow mb-4" style="border-top: 5px solid rgb(179, 179, 0);">
+                <div class="card-body">
+                    <h4 style="color: darkblue;  padding: .5%;">Family Details</h4>
+                    <table class="table table-responsive table-borderless">
+                        <tbody >
+                            <tr >
+                                <td>Father's Name   :</td>
+                                <td>{{employee.father_name}}</td>
+                            </tr>
+                            <tr>
+                                <td>Mother's Name :</td>
+                                <td>{{employee.mother_name}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="card shadow mb-4" style="border-top: 5px solid magenta;">
+                <div class="card-body">
+                    <h4 style="color: darkblue;  padding: .5%;">Contact Details</h4>
+                    <table class="table table-responsive table-borderless">
+                        <tbody >
+                            <tr >
+                                <td>E-mail Id  :</td>
+                                <td>{{employee.user.email}}</td>
+                            </tr>
+                            <tr>
+                                <td>Mobile No. :</td>
+                                <td>{{employee.contact}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="card shadow mb-4" style="border-top: 5px solid blue;">
+                <div class="card-body">
+                    <h4 style="color: darkblue;  padding: .5%;">Adress</h4>
+                    <table class="table table-responsive table-borderless">
+                        <tbody >
+                            <tr >
+                                <td>Present :</td>
+                                <td>{{employee.address}}</td>
+                            </tr>  
+                            <tr >
+                                <td>Correspondance :</td>
+                                <td>{{employee.address}}</td>
+                            </tr>  
+                            <tr >
+                                <td>Permanent :</td>
+                                <td>{{employee.address}}</td>
+                            </tr>  
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
