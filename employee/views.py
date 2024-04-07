@@ -29,15 +29,10 @@ def register(request):
             user = User.objects.create_user(first_name = fn,last_name = ln, username = ec, password = pwd, email=em)
             EmployeeSignup.objects.create(user = user , empcode = ec)
 
-            # send_mail(
-            #     "Employee Login Credentials",
-            #     "Username - " + ec + "/n" + "Password - " + pwd + "/n You can Change the password once you log in .",
-            #     "sufi590eis@gmail.com",
-            #     [em]
-            # )
+           
 
             msg = EmailMessage()
-            msg['From'] = 'sufiyaniffco@gmail.com'
+            msg['From'] = 'from email'
             msg['To'] = em
             msg['Subject'] = "Employee Log in credentials"
             msg.set_content("Username - " + ec + "\n" + "Password - " + pwd + "\n You can Change the password once you log in .")
@@ -47,20 +42,13 @@ def register(request):
             print("hhh")
             server.starttls()
             print("hhh")
-            server.login("sufiyaniffco@gmail.com" , "rrsyfoujdzvucsie")
+            server.login("from email" , "password")
             print("hhh")
-            server.sendmail("sufiyaniffco@gmail.com", em , msg.as_string())
+            server.sendmail("from email", em , msg.as_string())
             print("hhh")
             server.close()
 
-            # ema = EmailMessage()
-            # ema["From"] = "sufi590eis@gmail.com"
-            # ema["To"] = em
-            # ema["Subject"] = "Employee Log In credentials"
-            # ema.set_content("Username - " + ec + "/n" + "Password - " + pwd + "/n You can Change the password once you log in .")  
-            # with smtplib.SMTP_SSL("smtp.gmail.com", 465) as smtp :
-            #     smtp.login("sufi590eis@gmail.com", "hxyhotqksauzjwbi")
-            #     smtp.sendmail("sufi590eis@gmail.com",em , ema.as_string())
+           
 
             eror = "yes"
         except:
